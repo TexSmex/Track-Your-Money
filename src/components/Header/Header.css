@@ -1,0 +1,13 @@
+.navLink{
+  color:gray;
+  font-weight: bold;
+  font-style: none;
+  text-decoration: none
+}
+
+.is-active{
+  font-weight: bold;
+  color:black;
+  text-decoration: underline;
+}
+
