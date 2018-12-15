@@ -20,17 +20,28 @@ serviceWorker.unregister();
 
 //-----------------------------------------------------------------------------
 
-let defaultExpense = {
-  description: "",
-  amount: 0,
-  note: "",
-  createdAt: 0
-};
+// let defaultExpense = {
+//   description: "",
+//   amount: 0,
+//   note: "",
+//   createdAt: 0
+// };
 // We could defind the default values of the expense inside the fuction thanks to the destruction operator, but for more clarity I prefere to put it separated in a variable.
-const createExpense = (expense = defaultExpense) => {
+const createExpense = ({
+  id = undefined,
+  description= "",
+  amount= 0,
+  note= "",
+  createdAt= 0
+} = {}) => {
   return {
     type: "CREATE_EXPENSE",
-    expense
+    id,
+    description,
+    amount,
+    note,
+    createdAt
+     
   };
 };
 
@@ -52,8 +63,17 @@ const removeExpense = id => {
 const expensesReducer = (expenses = [], action) => {
   switch (action.type) {
     case "CREATE_EXPENSE":
+    const {  id,
+      description,
+      amount,
+      note,
+      createdAt} = action
       //we use the spread operator to not touch the state
-      return [...expenses, action.expense];
+      return [...expenses, {  id,
+        description,
+        amount,
+        note,
+        createdAt} ];
     case "EDIT_EXPENSE":
       return expenses.map(expense => {
         const edits = action.update;
@@ -145,7 +165,32 @@ const store = createStore(
 
 // To watch all the changes, I used the subscribe API directly without turning it into an Observable even if it's a low level API. For more informations : https://github.com/reduxjs/redux/issues/303#issuecomment-125184409
 
-store.subscribe(() => console.log(store.getState()));
+const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
+  return expenses.filter(expense => {
+    const startDateMatch =
+      typeof startDate !== "number" || startDate <= expense.createdAt;
+    const endDateMatch =
+      typeof endDate !== "number" || endDate >= expense.createdAt;
+    //const textMatch = expense.description.toLowerCase().includes(text.toLowerCase())
+    //const textMatch = expense.note.toLowerCase().includes(text.toLowerCase());
+    const textMatch = expense.description.toLowerCase().includes(text.toLowerCase()) || expense.note.toLowerCase().includes(text.toLowerCase());
+
+    // console.log(expense.note)
+    // console.log(expense.createdAt)
+      
+    return startDateMatch && endDateMatch && textMatch;
+  });
+  //expenses.filter(expense => {
+  //const startDateMatch = typeof startDate === 'number'? startDate :
+  //})
+};
+
+store.subscribe(() => {
+  const state = store.getState();
+  
+  console.log(getVisibleExpenses(state.expenses, state.filters));
+ 
+});
 
 // The next section is only for testing purposes
 store.dispatch(createExpense({ description: "Rent", amount: "500" }));
@@ -166,14 +211,16 @@ store.dispatch(
   editExpense("5", { note: "Made an error on the price", amount: "2400" })
 );
 
-store.dispatch(removeExpense("5"));
+store.dispatch(setFilterText("error"))
 
-store.dispatch(setFilterText("Rent"));
+// store.dispatch(removeExpense("5"));
 
-store.dispatch(setFilterText(""));
+// store.dispatch(setFilterText("Rent"));
 
-store.dispatch(setFilterStartDate(-1000));
+// store.dispatch(setFilterText(""));
 
-store.dispatch(setFilterEndDate(1000));
+// store.dispatch(setFilterStartDate(-1000));
 
-store.dispatch(setFilterSortBy("Amount"));
+// store.dispatch(setFilterEndDate(1000));
+
+// store.dispatch(setFilterSortBy("Amount"));
