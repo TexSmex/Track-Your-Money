@@ -179,8 +179,8 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     // console.log(expense.createdAt)
       
     return startDateMatch && endDateMatch && textMatch;
-  });
-  //expenses.filter(expense => {
+  }).sort((a,b) => sortBy.toLowerCase() === 'date'? -(parseInt(a.createdAt)-parseInt(b.createdAt)) : -(parseFloat(a.amount)-parseFloat(b.amount)));
+//expenses.filter(expense => {
   //const startDateMatch = typeof startDate === 'number'? startDate :
   //})
 };
@@ -193,7 +193,7 @@ store.subscribe(() => {
 });
 
 // The next section is only for testing purposes
-store.dispatch(createExpense({ description: "Rent", amount: "500" }));
+store.dispatch(createExpense({ description: "Rent", amount: "500",  createdAt: 1500 }));
 
 store.dispatch(
   createExpense({
@@ -208,19 +208,21 @@ store.dispatch(
 );
 
 store.dispatch(
-  editExpense("5", { note: "Made an error on the price", amount: "2400" })
+  editExpense("5", { note: "Made an error on the price", amount: 2400 })
 );
 
-store.dispatch(setFilterText("error"))
+//store.dispatch(setFilterText("error"))
 
 // store.dispatch(removeExpense("5"));
 
 // store.dispatch(setFilterText("Rent"));
 
-// store.dispatch(setFilterText(""));
+//store.dispatch(setFilterText("COFFee"));
 
-// store.dispatch(setFilterStartDate(-1000));
+// store.dispatch(setFilterStartDate(1000));
 
-// store.dispatch(setFilterEndDate(1000));
+// store.dispatch(setFilterEndDate(2000));
 
-// store.dispatch(setFilterSortBy("Amount"));
+//store.dispatch(setFilterSortBy("DAte"));
+
+store.dispatch(setFilterSortBy("Amount"));
