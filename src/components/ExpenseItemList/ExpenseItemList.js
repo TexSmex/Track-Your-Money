@@ -1,13 +1,21 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
-const ExpenseItemList = ({description, amount, createdAt, note}) => (
+const ExpenseItemList = ({id, description, amount, createdAt, note}) => {
 
+  const createdAtMoment = moment(createdAt).format("MM/DD/YYYY, h:mm:ss a");
+  
+  return(
   <div>
-    <h2>{description}</h2>
-    <h3>${amount}-{createdAt}</h3>
-    <h4>{note}</h4>
+    <Link to={`/edit/${id}`}>
+      <h3>{description}</h3>
+    </Link>
+    <p>{amount} - {createdAtMoment}</p>
+    <p>{note}</p>
   </div>
-
-)
+  )};
+ 
 
 export default ExpenseItemList;
+
