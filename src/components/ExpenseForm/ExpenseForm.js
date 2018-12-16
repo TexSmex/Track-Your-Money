@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
 
-export default class CreateExpenseForm extends Component {
+export default class ExpenseForm extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      description : props.expense ? props.expense.description : '',
+      amount: props.expense ? props.expense.amount :'',
+      note: props.expense ? props.expense.note :'',
+      createdAt: props.expense ? props.expense.createdAt : '', 
+      error:''
+      }
   }
 
-  state = {
-    description : '',
-    amount:'',
-    note:'',
-    createdAt:'', 
-    error:''
-    }
+  
 
     onDescriptionChange = (e) => {
       const description = e.target.value;

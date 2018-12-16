@@ -1,7 +1,8 @@
-//create expense action :
+import uuid from 'uuid';
 
+//create expense action :
 export const createExpense = ({
-  id = undefined,
+  id = uuid(),
   description = "",
   amount = 0,
   note = "",
@@ -18,7 +19,6 @@ export const createExpense = ({
 };
 
 //edit expense action :
-
 export const editExpense = (id, update) => {
   return {
     type: "EDIT_EXPENSE",
@@ -28,7 +28,6 @@ export const editExpense = (id, update) => {
 };
 
 //remove expense action :
-
 export const removeExpense = id => {
   return {
     type: "REMOVE_EXPENSE",

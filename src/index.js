@@ -23,11 +23,15 @@ store.dispatch(
 );
 
 store.dispatch(
-  createExpense({ description: "Laptop", amount: "2000", id: "5" })
+  createExpense({ description: "Laptop", amount: "2000", })
 );
 
 store.dispatch(
   editExpense("5", { note: "Made an error on the price", amount: 2400 })
+);
+
+store.dispatch(
+  createExpense({ description: "DOB GIFT", amount: "50000", createdAt:1514300400000 })
 );
 
 //-----------------------------------------------------------------------------------
@@ -35,7 +39,7 @@ store.dispatch(
 
 
 
-console.log(store.getState())
+store.subscribe( ()=> {console.log(store.getState())})
 
 render(
   <Provider store={store}>
