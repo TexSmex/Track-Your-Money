@@ -6,15 +6,21 @@ import { connect } from 'react-redux'
 
 
 
-const DashboardPage = (props) => (
 
-  <div>
-  <div>
-  <ExpensesFilters/>
-  </div>
-  {props.expenses.map(expense => <ExpenseItemList key={expense.id} {...expense} />)}
-  </div>
-);
+const DashboardPage = (props) => {
+
+
+  return (
+
+    <div>
+    <div>
+    <ExpensesFilters/>
+    </div>
+    {props.expenses.map(expense => <ExpenseItemList key={expense.id} {...expense} />)}
+    </div>
+  )
+ 
+};
 
   const mapStateToProps = state => ({ expenses: getVisibleExpenses(state.expenses,state.filters)})
   
