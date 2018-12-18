@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Track-Your-Money/precache-manifest.b2eb7758389cb1dffaebe642811df518.js"
+  "/Track-Your-Money/precache-manifest.9dcd312edea87f9567e1fb154e75ef27.js"
 );
 
 workbox.clientsClaim();
