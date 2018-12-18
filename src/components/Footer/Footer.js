@@ -1,8 +1,8 @@
 import React from 'react';
-
+import './Footer.css'
 const Footer = () => (
-  <footer>
-  <div>@Copyright 2018 - Made with React, Redux and Firebase By Saad Mourtada</div>
+  <footer className='stickyFooter'>
+  <div className='copyright'>@Copyright 2018 - Made with React and Redux By Saad Mourtada</div>
   </footer>
   );
 

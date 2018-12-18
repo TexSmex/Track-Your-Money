@@ -1,0 +1,64 @@
+.formContainer{
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: black solid 1px;
+  background-color: hsla(0, 0%, 0%, 0.801);
+}
+
+.formInput{
+  border: hsla(187, 93%, 17%, 0.478) solid 2px;
+  
+  width: 60%;
+  height: 30px;
+  font-size: 20px;
+  color:black;
+  padding: 5px;
+}
+
+.formTextArea{
+  width: 60%;
+  height: 150px;
+  border: hsla(187, 93%, 17%, 0.478) solid 2px;
+  font-size: 20px;
+  color:black;
+  padding: 5px;
+}
+
+.formButton{
+  background-color: #cac1c1;
+  border:#04e004 solid 1px;
+  background-color: #04e004;
+  border-radius: 15px;
+  height:45px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.formButton:hover{
+  background-color: greenyellow;
+  border:greenyellow solid 1px;
+  border-radius: 100px;
+  transition: all 0.5s ease;
+  font-size: 20px;
+}
+
+body{
+  background-color: hsl(118, 100%, 81%);
+}
+
+
+@media only screen and (min-width: 1000px) {
+  .formInput{
+    width: 50%;
+  }
+  .formTextArea{
+    width: 50%;
+  }
+ 
+}

@@ -2,21 +2,35 @@ import React from 'react';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import { setFilterText, setFilterSortBy, setFilterStartDate, setFilterEndDate } from '../../actions/filters'
-
+import './ExpensesFilters.css';
 const ExpensesFilters = (props) => {
 
  
   
 
 return (
-  <div>
-    <input type='text' value={props.filters.text} onChange={(e) => props.handleTextFiler(e.target.value)}/>
+  <div className='filtersContainer'>
+    <div className='miniContainer'>
+      <div>
+        <input 
+        type='text'
+        placeholder='Search an expense' 
+        value={props.filters.text} 
+        onChange={(e) => props.handleTextFiler(e.target.value)}
+        />🔍
+    </div>
     <select value={props.filters.sortBy} onChange={(e) => props.handleSorting(e.target.value)}>
     <option value="Amount">Amount</option>
     <option value="Date">Date</option>
     </select>
-    <input type="date" value={props.startDateToFormat} onChange={(e) => props.handleStartDate(e.target.value)}/>
+    </div>
+    <div className='miniContainer'> 
+      <input 
+      type="date" 
+      value={props.startDateToFormat} 
+      onChange={(e) => props.handleStartDate(e.target.value)}/>
     <input type="date" value={props.endDateToFormat} onChange={(e) => props.handleEndDate(e.target.value)}/>
+    </div>
   </div>
 )}
 

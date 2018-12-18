@@ -4,8 +4,8 @@
 const filtersDefaultState = {
   text: "",
   sortBy: "Date",
-  startDate: undefined,
-  endDate: undefined
+  startDate: '2000-01-01' ,
+  endDate: '2020-01-01'
 };
 
 

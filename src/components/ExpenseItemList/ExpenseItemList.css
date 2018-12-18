@@ -1,0 +1,86 @@
+.description {
+  text-align: center;
+  font-size: 25px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+p{
+  text-align: center;
+}
+.amount {
+  text-align: center;
+  font-size: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #006e00;
+  font-weight: bold;
+}
+.createdAt{
+  font-style: italic;
+
+}
+.note{
+  border: black solid 1px; 
+  padding: 10px;
+  width: 280px;
+  margin: 0 auto;
+}
+
+.spanNote{
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: bold;
+  
+}
+.buttonsContainer{
+  display: flex;
+  width: 180px;
+  height: 30px;
+  margin: 5px auto;
+  justify-content: space-around;
+  align-items: center;
+}
+.expenseListButtons{
+padding: 5px;
+font-family: 'Courier New', Courier, monospace;
+font-weight: bold;
+font-size: 15px;
+cursor: pointer;
+}
+
+.Link{
+  text-decoration: none;
+font-style: none;
+}
+
+.edit{
+background-color: yellow;
+border: darkgoldenrod solid 1px;
+border-radius: 10px;
+}
+
+.remove{
+  background-color: red;
+  border: darkred solid 1px;
+  border-radius: 10px;
+  }
+
+  /* @media only screen and (min-width: 600px) {
+    .description {
+      text-align: left;
+      font-size: 30px;
+      margin-left: 1px;
+    }
+    p{
+      text-align: left;
+    }
+    .amount {
+      text-align: left;
+      font-size: 25px;
+    }
+    .note{
+     margin-left: 1px;
+    }
+    
+    .buttonsContainer{
+      margin-left: 50px;
+    }
+  } */

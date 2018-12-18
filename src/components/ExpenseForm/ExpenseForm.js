@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './ExpenseForm.css'
 export default class ExpenseForm extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +8,7 @@ export default class ExpenseForm extends Component {
       description : props.expense ? props.expense.description : '',
       amount: props.expense ? props.expense.amount :'',
       note: props.expense ? props.expense.note :'',
-      createdAt: props.expense ? props.expense.createdAt : '', 
+      createdAt: props.expense ? props.expense.createdAt : Date.now(), 
       error:''
       }
   }
@@ -39,7 +39,7 @@ export default class ExpenseForm extends Component {
         this.props.onSubmit({
           description: this.state.description,
           amount: this.state.amount,
-          createdAt: Date.now(),
+          createdAt: this.state.createdAt ,
           note: this.state.note
         });
       } else {
@@ -51,27 +51,28 @@ export default class ExpenseForm extends Component {
   render() {
     
     return (
-      <div>
+      <div  >
       {this.state.error && <p>{this.state.error}</p>}
-         <form onSubmit={this.onSubmit}>
-          <input 
+         <form onSubmit={this.onSubmit} className='formContainer'>
+          <input className='formInput'
           type="text"
-          placeholder="Description" 
+          placeholder="Enter a Description" 
           value={this.state.description} 
           onChange={this.onDescriptionChange} 
           />
-          <input 
+          <input className='formInput'
           type="text" 
-          placeholder="Amount"
+          placeholder="Enter an Amount"
           value={this.state.amount} 
           onChange={this.onAmountChange} 
           />
-          <textarea 
+          <textarea className='formTextArea'
           placeholder="Add a note for your expense (optional)"
           value={this.state.note} 
           onChange={this.onNoteChange} 
           />
-        <button>{this.props.expense ? 'Edit Expense' : 'Create New Expense' }</button>
+        <button className='formButton'>{this.props.expense ? 'Edit Expense' : 'Create New Expense' }</button>
+        
       </form>
       </div>
     )

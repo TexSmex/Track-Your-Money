@@ -16,7 +16,7 @@ const DashboardPage = (props) => {
     <div>
     <ExpensesFilters/>
     </div>
-    {props.expenses.map(expense => <ExpenseItemList key={expense.id} {...expense} />)}
+    {props.expenses.map(expense => <ExpenseItemList key={expense.id} expense={expense} />)}
     </div>
   )
  
